@@ -1,0 +1,67 @@
+\section{Геометрия пространства СППО матриц}
+\subsection{Метрика на многообразии СППО матриц}
+Можем выразить $\spn$: 
+$$ \spn \cong (V_{n,p} \times S(p))/O(p) $$
+
+Размерность $\spn$ есть $dim(V_{n,p} \times S(p)) - dim(O(p))=pn-p(p-1)/2$. \\
+Если $(U, R^2) \in V_{n,p} \times S(p)$ представляет $A \in \spn$, то можно выразить касательные вектора $T_A\spn$ бесконечно малыми изменениями $(\Delta, D)$, где 
+$$ \Delta = U\botB, \ B \in \setR^{(n-p) \times p} $$
+$$ D = RD_0R $$
+такие, что $U \bot \in V_{n, n-p}, \ U^TU\bot = 0$ и $D_0 \in Sym(p) = T_IS(p)$. Тогда метрика $\spn$ может быть задана как сумма бесконечно малых расстояний в $Gr(p,n)$ и $S(p)$:
+\begin{equation}\label{spsd_metric}
+     g_{(U, R^2)}((\Delta_1, D_1), (\Delta_2, D_2)) = Tr(\Delta_1^T \Delta_2) + k \ Tr(R^{-1}D_1R^{-2}D_2R^{-1}), \ k>0
+\end{equation}
+Следующая теорема доказывает, что введение этой метрики наделяет $\spn$ римановой структурой
+\begin{theorem}
+Пространство $ $\spn$ \cong (V_{n,p} \times S(p))/O(p) $, наделенное метрикой \eqref{spsd_metric} является римановым многообразием с горизонтальным пространством 
+$$ \manH_{(U, R^2)} = \set{(\Delta, D):\ \Delta=U\bot B, \ B \in \setR^{(n-p) \times p},\ D=RD_0R, \ D_0 \in Sym(p)} $$
+Более того, эта метрика инвариантна относительно ортогональных преобразований, масштабирования и псевдоинверсии.
+\end{theorem}
+Доказательство этой теоремы может быть найдено в \cite{bonnabel2009riemannian}
+\newpage
+\subsection{Геодезические на многообразии СППО матриц}
+В этой секции рассматривается построение геодезических, соединяющих матрицы $A,B \in \spn$. \\
+Пусть $V_A, V_B \in V_{n,p}$ – две матрицы, являющиеся линейными оболочками, порожденными $A, B$. Сингулярное разложение $V_B^TV_A$ порождает $O_A, O_B \in \setR^{p \times p}$ такие, что
+\begin{equation} \label{OVVO}
+      O_A^TV_A^TV_BO_B = diag(\sigma_1, \ldots, \sigma_p), 1 \geq \sigma_1 \geq \ldots \geq \sigma_p \geq 0
+\end{equation}
+$\sigma_i =  \cos \theta_i$ - косинусы углов $0 \leq \theta_1 \leq \ldots \leq \theta_p \leq \pi/2$ между двумя подпространствами.\\
+Корневые вектора $ U_A=(u_1^A, \ldots, u_p^A) = V_AO_A $ и $U_B=(u_1^B, \ldots, u_p^B) = V_BO_B$ дают формулу грассмановской геодезической, соединяющей $range(A)$ и $range(B)$
+\begin{equation}
+     \label{grassman_geodesics}
+     U(t) = U_A \cos(\Theta t)V + X \sin(\Theta t)
+\end{equation}
+где $\Theta = diag(\theta_1, \ldots, \Theta_p)$, а $X$ - нормализованная проекция $V$ на пространство столбцов $U\bot$, т.е. 
+$X=(I-U_AU_A^T)U_BF$, где $F$ - псевдоинверсия матрицы $diag(\sin(\theta_1), \ldots, \sin(\theta_p))$. \\
+Соответствующая геодезическая $R^2(t)$ в $S(p)$ должна соединять $R_A^2=U_A^TAU_A$ и $R_B^2=U_B^TBU_B$ :
+
+\begin{equation}
+     \label{p-geodesics}
+     R^2(t) = R_A \exp(t\log R^{-1}_AR^2_BR^{-1}_A)R_A
+\end{equation}
+
+Таким образом геодезическая задается следующим выражением:
+\begin{equation}
+     \label{spsd_geodesics}
+     \gamma_{A \rightarrow B}(t) = U(t)R^2(t)U^T(t)
+\end{equation}
+Геодезические, исходящая из любой точки, сохраняет ранг, симметричность и положительную определенность матрицы $UR^2U^T$, формируют покрытие $S^+(n,p)$, определены на $\spn$ $\forall t \in \setR$ для любого касательного вектора. \\
+
+\subsection{Расстояние между СППО матрицами}
+\begin{theorem}
+Сингулярное разложение \eqref{OVVO} и геодезические кривые \eqref{grassman_geodesics} и \eqref{p-geodesics} задают кривую в $\spn$:
+$$ \gamma_{A \rightarrow B}(t) = U(t)R^2(t)U^T(t) $$
+со следующими свойствами:
+\begin{itemize}
+    \item $\gamma_{A \to B}(\cdot)$ соединяет $A$ и $B$ в $\spn$ так, что $\gamma_{A \to B}(0) = A, \ \gamma_{A \to B}(1)=B$ и $\gamma_{A \to B}(t) \in \spn \forall t \in [0, 1]$
+    \item Кривая $(U(t), R^2(t))$ является горизонтальным сдвигом $\gamma_{A \to B}(t)$ и является геодезической в структурном пространстве $V_{n,p} \times S(p)$
+    \item Квадратичная длина $\gamma_{A \to B}$ на римановом многообразии $(\spn, g)$ задается следующим выражением:
+    \begin{equation}
+        \label{spsd-distance}
+         l^2(\gamma_{A \to B}) = ||\Theta||_F^2 + k ||\log R_A^{-1} R_B^2 R_A^{-1}||_F^2
+    \end{equation}
+    Она инвариантна относительно псевдоинверсии, ортогональных преобразований и масштабирования.
+\end{itemize}
+Более того, кривая $\gamma_{A \to B}$ уникальна, если $(p-1)$ угол между пространствами удовлетворяет $\theta_{p-1} \neq \pi/2$
+\end{theorem}
+Доказательство этой теоремы подробно рассмотрено в \cite{bonnabel2009riemannian}

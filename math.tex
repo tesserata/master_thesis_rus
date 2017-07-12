@@ -1,0 +1,67 @@
+\chapter{Используемый математический аппарат}
+
+\section{Обозначения}
+\begin{itemize}
+	\item $M(n)$ – пространство матриц размера $n \times n$ с действительными значениями.
+	\item $ Sym(n) = \condset{\bs \in M(n)}{\bs^T \ = \ \bs}$ пространство всех симметричных матриц в $M(n)$.
+	\item $ S(n) = \condset{\bs \in Sym(n)}{u^T\bs u > 0, \ \forall u \in \setRn}$ - множество всех симметричных положительно определенных (СПО) матриц размера $n \times n$.
+	\item $S^+(n, p) = \condset{\bs \in Sym(n)}{u^T\bs u \geq 0, \ \forall u \in \setRn, \ rk(\bs)=p}$ – множество всех симметричных положительно полуопределенных (СППО) матриц размера $n \times n$ и ранга $p \leq n$. Это обозначение далее будет использоваться только в случае, когда $p<n$.
+	\item 
+	\item $Gl(n)$ – множество всех обратимых матриц размера $n \times n$ в $M(n)$.
+	\item $diag(\lambda_1, \ldots, \lambda_n)$ – матрица размера $n \times n$ со значениями $\lambda_i$ на диагонали.
+	\item $Tr(\cdot)$ - оператор следа матрицы
+	\item $I = diag(1, \ldots, 1)$ - единичная матрица.
+	\item $T_p \manM$ - касательное пространство к многообразию $\manM$ в точке $p$.
+\end{itemize}
+
+\section{Общие определения}
+\begin{definition}
+Норма Фробениуса для матриц: $$\norm{A}{F}^2 = Tr({\bf AA^T}) = \sum{\walls{A_{i,j}}^2}$$. 
+\end{definition}
+\begin{definition}
+Норма $\setL_2$ для вектора ${\bf a}$: $$ \norm{{\bf a}}{2} = \sqrt{\sum_{\substack{i}}|{\bf a_i}|^2}$$
+\end{definition}
+
+\begin{definition}
+Симметричная матрица $M$ называется положительно полуопределенной, если $\forall x \in \setRn$:
+$$ x^T M x \geq 0 $$
+$M$ положительно определена, если неравенство строгое $\forall x \neq 0$
+\end{definition}
+
+\begin{lemma}
+$M$ положительно полуопределенная тогда и только тогда, когда все ее собственные значения $ \forall \lambda_i \geq 0$. Аналогично, $M$ положительно определена, тогда и только тогда, когда $\forall \lambda_i > 0$
+\end{lemma}
+\begin{proof}
+Рассмотрим собственный базис матрицы $M=Q^T \Lambda Q$. Очевидно, что $y^T \Lambda y = \sum_{i} \lambda_i y_i^2 \geq 0 \ \forall y \in \setRn$ тогда и только тогда, когда $\lambda_i \geq 0 \forall i$. Для положительно определенных матриц аналогично.
+\end{proof}
+
+\begin{definition}
+$n$-мерное топологическое многообразие (без границы) — это Хаусдорфово топологическое пространство, в котором каждая точка имеет открытую окрестность $U$, гомеоморфную открытому подмножеству $n$-мерного Евклидова пространства $\setR^n$.
+\end{definition}
+Далее будем обозначать $n$-мерное топологическое пространство без границы как «многообразие»
+\begin{definition}
+Локальная карта многообразия $\manM$ - пара $(U, \phi)$, где $\phi$ - гомеоморфизм из открытого множества $U \subset \manM$ на открытое подмножество $\setR^n$
+\end{definition}
+
+\begin{definition}
+Множество карт $\set{(U_\alpha \phi_\alpha)}, \alpha \in \Alpha$ ($\Alpha$ - некоторое множество индексов) называется n-мерным $C^k$ атласом, $0 \leq k \leq \infty$ многообразия $\manM$, если:
+\begin{itemize}
+    \item совокупность всех $U_\alpha$ покрывает $\manM$, т.е. $\manM=\cup _{{\alpha \in A}}U_{\alpha}$.
+    \item $ \forall \alpha ,\beta \in A$ таких, что $U_{\alpha }\cap U_{\beta }\neq \varnothing $, отображение:
+    $$\phi _{{\alpha }}^{{\beta }}=\phi _{\beta }\circ \phi _{\alpha }^{{-1}}:\phi _{\alpha }(U_{\alpha }\cap U_{\beta })\to \phi _{\beta }(U_{\alpha }\cap U_{\beta })$$
+    является гладким отображением класса $C^k$.
+\end{itemize}
+$ {\displaystyle \phi _{\alpha }^{\beta }}$ называется преобразованием координат точки $m$ с карты  ${\displaystyle (U_{\alpha },\phi _{\alpha })}$ в карту $(U_{\beta },\phi _{\beta })$
+\end{definition}
+
+\begin{definition}
+Атлас многообразия называется $C^k$-гладким, если ${\displaystyle \phi _{\alpha }^{\beta }}$ является гладким отображением класса гладкости $C^k$
+\end{definition}
+
+\begin{definition}
+Многообразие называется гладким (или дифференцируемым), если оно наделено $C^k$-гладкой структурой, задаваемой $C^k$-гладким атласом
+\end{definition}
+
+Для гладких многообразий можно ввести понятия касательного вектора, касательного пространства, длины кривой.
+\input{spd}
+\input{spsd}
